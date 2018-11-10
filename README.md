@@ -120,7 +120,7 @@ Since we don't have the query word `test` in our database, it throws out the emp
 
 We will not making IMDB database in elasticsearch for easy query in next step. 
 
-Follow those steps in <a href=https://github.com/kckenneth/Elasticsearch/new/master>here</a>.
+Follow those steps in <a href=https://github.com/kckenneth/Elasticsearch/blob/master/imdb_elasticsearch.md>here</a>.
 
 
 
