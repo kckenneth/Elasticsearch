@@ -118,7 +118,9 @@ Since we don't have the query word `test` in our database, it throws out the emp
 ```
 # Updating Elasticsearch database
 
+We will not making IMDB database in elasticsearch for easy query in next step. 
 
+Follow those steps in <a href=https://github.com/kckenneth/Elasticsearch/new/master>here</a>.
 
 
 
