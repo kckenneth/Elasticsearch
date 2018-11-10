@@ -228,21 +228,36 @@ There are `39,028` screens in year 1990. Since this is an international movie da
 
 ```
 # curl -X GET 'http://localhost:9200/_search?q=1990' | jq -C '.hits.total'
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  2907  100  2907    0     0   212k      0 --:--:-- --:--:-- --:--:--  218k
+
 39028
 ```
 ### Query 2. Count the number of screens that are 'short' 
+```
+# # curl -X GET 'http://localhost:9200/_search?q=1990' | jq -C '.hits.total'
+
+784902
+```
+Total short screens has `784,902` out of 5.4 million records. 
+
+### Query 3. Count the screen genre: Comedy
+```
+# curl -X GET 'http://localhost:9200/_search?q=comedy' | jq '.hits.total'
+
+1172415
+```
+There are `1,172,415` comedy screens. 
+
+### Query 4. Count the number of screens that plays at least an hour `total run times`
 
 
-### Query 3. Count the number of screens that plays at least an hour `total run times`
+
+### Query 5. Histogram of the total run times over the years in screen production 
 
 
-### Query 4. Histogram of the total run times over the years in screen production 
 
 
-### Query 5. Count the type of screen genres
+
+
 
 
 
