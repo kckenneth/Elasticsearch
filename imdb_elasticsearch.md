@@ -1,5 +1,21 @@
 # Making IMDB database in Elasticsearch
 
+For inserting database into elasticsearch by python API, go <a href=https://elasticsearch-py.readthedocs.io/en/master/>here</a>. 
+
+Using python API, we will update one of the IMDB publicly available in our elasticsearch. We will first download the IMDB tarbar in our virtual server. Since this is a tab separated file (`.tsv`) and huge, we will avoid open the file in one go, instead we will insert the database into elasticsearch on the fly one at a time. <a href=https://www.imdb.com/interfaces/>IMDB</a> `title.basics.tsv.gz` is used in this exercise. 
+
+## 1. Install Elasticsearch in Python
+```
+# pip install elasticsearch
+```
+
+## 2. Python API script
+
+```
+# vi imdb_insert.py
+```
+Copy and paste the following script
+
 ```
 #!/usr/bin/python
 
