@@ -209,12 +209,30 @@ Output
 }
 ```
 
+There are total 6 hits for `Carmencita` query. 
+
 ### Query 1. Count the number of screens that come out in 1990
 
 ```
-# 
-```
+#  curl -X GET 'http://localhost:9200/_search?q=1990' | jq -r '.'
 
+  "hits": {
+    "total": 39028,
+    "max_score": 3.2078505,
+    "hits": [
+      {
+    ...
+    ...
+```
+There are `39,028` screens in year 1990. Since this is an international movie database and this particular database has all kinds of screens; short, documentary, movie, film, play, so it makes sense. We can also shorten our output by directly targeting the `total` in our jq query. 
+
+```
+# curl -X GET 'http://localhost:9200/_search?q=1990' | jq -C '.hits.total'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2907  100  2907    0     0   212k      0 --:--:-- --:--:-- --:--:--  218k
+39028
+```
 ### Query 2. Count the number of screens that are 'short' 
 
 
