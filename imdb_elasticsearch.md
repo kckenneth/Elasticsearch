@@ -73,16 +73,146 @@ Before you launch the python script, make sure you already launched the elastics
 20000 records inserted
 ...
 ...
-650000 records inserted
+5380000 records inserted
+5390000 records inserted
+5394864 records inserted
 ```
-It took minutes to insert all imdb basic database into elasticsearch. 
+It took an hour and half to insert all imdb basic database (5.4 millions records) into elasticsearch. 
 
 ## Query 
+Sample query on `Carmencita` movie name. 
+
+```
+# curl -X GET 'http://localhost:9200/artist/_search?q=Carmencita
+```
+Output
+```
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1979  100  1979    0     0   158k      0 --:--:-- --:--:-- --:--:--  175k
+{
+  "took": 6,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 6,
+    "max_score": 6.274984,
+    "hits": [
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt0453643",
+        "_score": 6.274984,
+        "_source": {
+          "genres": "Short",
+          "tconst": "tt0453643",
+          "startyear": "1897",
+          "runtimeminutes": "\\N",
+          "originaltitle": "Carmencita",
+          "endyear": "\\N",
+          "primarytitle": "Carmencita",
+          "titletype": "short",
+          "isadult": "0"
+        }
+      },
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt0000001",
+        "_score": 6.095662,
+        "_source": {
+          "genres": "Documentary,Short",
+          "tconst": "tt0000001",
+          "startyear": "1894",
+          "runtimeminutes": "1",
+          "originaltitle": "Carmencita",
+          "endyear": "\\N",
+          "primarytitle": "Carmencita",
+          "titletype": "short",
+          "isadult": "0"
+        }
+      },
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt0764727",
+        "_score": 4.8765297,
+        "_source": {
+          "genres": "Comedy,Musical,Romance",
+          "tconst": "tt0764727",
+          "startyear": "1948",
+          "runtimeminutes": "\\N",
+          "originaltitle": "Carmencita mia",
+          "endyear": "\\N",
+          "primarytitle": "Carmencita mia",
+          "titletype": "movie",
+          "isadult": "0"
+        }
+      },
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt0372198",
+        "_score": 4.2669353,
+        "_source": {
+          "genres": "Short",
+          "tconst": "tt0372198",
+          "startyear": "1999",
+          "runtimeminutes": "5",
+          "originaltitle": "Carmencita, esta noche vas a ver",
+          "endyear": "\\N",
+          "primarytitle": "Carmencita, esta noche vas a ver",
+          "titletype": "short",
+          "isadult": "0"
+        }
+      },
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt7200526",
+        "_score": 4.2669353,
+        "_source": {
+          "genres": "Comedy,Drama,Romance",
+          "tconst": "tt7200526",
+          "startyear": "2017",
+          "runtimeminutes": "\\N",
+          "originaltitle": "El cumpleaños de Carmencita",
+          "endyear": "\\N",
+          "primarytitle": "El cumpleaños de Carmencita",
+          "titletype": "tvEpisode",
+          "isadult": "0"
+        }
+      },
+      {
+        "_index": "imdb",
+        "_type": "imdb_basic",
+        "_id": "tt7200522",
+        "_score": 3.764848,
+        "_source": {
+          "genres": "Comedy,Drama,Romance",
+          "tconst": "tt7200522",
+          "startyear": "2017",
+          "runtimeminutes": "\\N",
+          "originaltitle": "Una noche muy especial para Carmencita",
+          "endyear": "\\N",
+          "primarytitle": "Una noche muy especial para Carmencita",
+          "titletype": "tvEpisode",
+          "isadult": "0"
+        }
+      }
+    ]
+  }
+}
+```
 
 ### Query 1. Count the number of screens that come out in 1990
 
 ```
-# curl -X GET 'http://localhost:9200/artist/_search?q=Carmencita
+# 
 ```
 
 ### Query 2. Count the number of screens that are 'short' 
