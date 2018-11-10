@@ -2,12 +2,15 @@
 
 For inserting database into elasticsearch by python API, go <a href=https://elasticsearch-py.readthedocs.io/en/master/>here</a>. 
 
-Using python API, we will update one of the IMDB publicly available in our elasticsearch. We will first download the IMDB tarbar in our virtual server. Since this is a tab separated file (`.tsv`) and huge, we will avoid open the file in one go, instead we will insert the database into elasticsearch on the fly one at a time. <a href=https://www.imdb.com/interfaces/>IMDB</a> `title.basics.tsv.gz` is used in this exercise. 
+Using python API, we will update one of the IMDB publicly available in our elasticsearch. We will first download the IMDB zipped file in our virtual server. Since this is a tab separated file (`.tsv`) and huge, we will avoid open the file in one go, instead we will insert the database into elasticsearch on the fly one at a time. <a href=https://www.imdb.com/interfaces/>IMDB</a> `title.basics.tsv.gz` is used in this exercise. 
 
 ## 1. Install Elasticsearch in Python
 ```
 # pip install elasticsearch
+# curl -O https://datasets.imdbws.com/title.basics.tsv.gz
+# gunzip -k title.basics.tsv.gz
 ```
+Make sure you use `-O` when you download the file. `-k` is to keep when decompressing the gunzipped file. 
 
 ## 2. Python API script
 
@@ -52,11 +55,20 @@ with open(fname) as f:
 	result = es.index(index=index, doc_type=doc_type, id=body["tconst"], body=body)
         count += 1
 
-	# break
-        if (count == 10000):
+	# to check regulary if the database is properly inserted
+        if (count % 10000 == 0):
             print("{} records inserted".format(count))
 	
     print("{} records inserted".format(count))
  ```
  
+## Inserting IMDB into Elasticsearch !
+
+Before you launch the python script, make sure you already launched the elasticsearch which will be listening at port `9200`. 
+
+```
+# chmod 755 imdb_insert.py
+# python imdb_insert.py title.basics.tsv
+```
+
  
