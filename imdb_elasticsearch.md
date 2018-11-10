@@ -24,40 +24,39 @@ import sys
 import csv
 from elasticsearch import Elasticsearch
 
-# by default we connect to localhost:9200
+# Creating es object class
 es = Elasticsearch()
 
-index='voters'
-doc_type='voter'
+index='imdb'
+doc_type='imdb_basic'
 
+# to get the name of the file we're inserting into elasticsearch
 fname = sys.argv[1]
 
 with open(fname) as f:
     csvreader = csv.reader(f, delimiter='\t', quotechar='"')
 
-	# extract headers
-    headers = next(csvreader)
+    # extract headers
+    # for python2, it's csvreader.next()
+    # for python3, it's next(csvreader)
+    headers = csvreader.next()
 
-	# lowercase headers
+    # lowercase headers
     headers = [h.lower() for h in headers]
 
-    id = 0
+    count = 0
     for fields in csvreader:
         body = {}
         for i in range(len(fields)):
             body[headers[i]] = fields[i]
-            print("This is headers {}".format(headers[i]))
-            print("This is fields {}".format(fields[i]))
-            print("This is an entire body {}".format(body))
-		result = es.index(index=index, doc_type=doc_type, id=body["voter_id"], body=body)
-        id += 1
-		# print result
+	result = es.index(index=index, doc_type=doc_type, id=body["tconst"], body=body)
+        count += 1
 
-		# break
-        if (id % 10000 == 0):
-            print("{} records inserted".format(id))
+	# break
+        if (count == 10000):
+            print("{} records inserted".format(count))
 	
-    print("{} records inserted".format(id))
+    print("{} records inserted".format(count))
  ```
  
  
