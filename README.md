@@ -116,6 +116,9 @@ Since we don't have the query word `test` in our database, it throws out the emp
   }
 }
 ```
+# Updating Elasticsearch database
+
+
 
 
 
