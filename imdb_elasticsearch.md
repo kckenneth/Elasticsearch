@@ -269,15 +269,3 @@ There are `600,744` screens in 10 years between 1990 and 2000.
     "hits" : [ {
 ```
 Over 1 million screens runs between 1 minute to 5 minutes. 
-
-
-
-
-
-
-
-
-
-
-
- 
