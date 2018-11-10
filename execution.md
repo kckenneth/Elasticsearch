@@ -16,31 +16,19 @@ There are `784,902` screens that fall into `short` genre out of 5.4 million reco
 
 ### Query 3. Count the screen genre: Comedy
 ```
-# curl -X GET 'http://localhost:9200/_search?q=comedy' | jq '.hits.total'
-
-1172415
+http://169.54.131.136:9200/_search?q=comedy&pretty
 ```
 There are `1,172,415` comedy screens. 
 
 ### Query 4. Count the number of screens that plays between 1990 and 2000.
 ```
-# curl -X GET 'http://localhost:9200/_search?q=startyear:\[1990+TO+2000\]&pretty'
-
-  "hits" : {
-    "total" : 600744,
-    "max_score" : 1.0,
-    "hits" : [ {
+http://169.54.131.136:9200/_search?q=startyear:\[1990+TO+2000\]&pretty
 ```
-There are `600,744` screens in 10 years between 1990 and 2000. 
+There are `209,384` screens in 10 years between 1990 and 2000. 
 
 ### Query 5. Histogram of the total run times over the years in screen production 
 
 ```
-# curl -X GET 'http://localhost:9200/_search?q=runtimeminutes:\[1+TO+5\]&pretty'
-
-  "hits" : {
-    "total" : 1091410,
-    "max_score" : 1.0,
-    "hits" : [ {
+http://169.54.131.136:9200/_search?q=runtimeminutes:\[1+TO+5\]&pretty
 ```
-Over 1 million screens runs between 1 minute to 5 minutes. 
+There are `174,832` screens that runs between 1 and 5 minutes. 
