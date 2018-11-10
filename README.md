@@ -62,11 +62,11 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 ```
 So the elasticsearch program is up and running and listening at the port `9200`. So we're good to go. There are two ways to test the elasticsearch. You can go to your local brower (your laptop) or you can test from the virtual server you're now in. 
 
-### Check from the browser
+### 1. Check from the browser
 ```
 169.54.131.136:9200
 ```
-### Check from the VM terminal
+### 2. Check from the VM terminal
 ```
 # curl -X GET http://localhost:9200
 ```
@@ -84,6 +84,36 @@ Both will generate
     "lucene_version" : "4.10.4"
   },
   "tagline" : "You Know, for Search"
+}
+```
+# Query in elasticsearch
+You can query in elasticsearch. 
+```
+# curl -X GET http://localhost:9200/_search?q=test
+
+{"took":2,"timed_out":false,"_shards":{"total":0,"successful":0,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]}}
+```
+Since we don't have the query word `test` in our database, it throws out the empty database. You can make it prettier output by `jq`. 
+
+```
+# curl -X GET http://localhost:9200/_search?q=test | jq -r '.'
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   121  100   121    0     0  15500      0 --:--:-- --:--:-- --:--:-- 17285
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 0,
+    "successful": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": 0,
+    "max_score": 0,
+    "hits": []
+  }
 }
 ```
 
