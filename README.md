@@ -69,7 +69,7 @@ You can check `# netstat -tnlp` to confirm nothing is listening at port `9200`. 
 # kill -9 <PID>
 ```
 
-#### >> New version 6.4.3 
+#### >> New version 6.4.3 [Not running 2018/11/10]
 ```
 # cd elasticsearch-6.4.3
 # nohup ./bin/elasticsearch &
