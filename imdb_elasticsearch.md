@@ -71,9 +71,6 @@ Before you launch the python script, make sure you already launched the elastics
 # python imdb_insert.py title.basics.tsv
 10000 records inserted
 20000 records inserted
-30000 records inserted
-40000 records inserted
-50000 records inserted
 ...
 ...
 650000 records inserted
@@ -82,9 +79,25 @@ It took minutes to insert all imdb basic database into elasticsearch.
 
 ## 4. Query 
 
+### Query 1. Count the number of screens that come out in 1990
+
 ```
 # curl -X GET 'http://localhost:9200/artist/_search?q=Carmencita
 ```
+
+### Query 2. Count the number of screens that are 'short' 
+
+
+### Query 3. Count the number of screens that plays at least an hour `total run times`
+
+
+### Query 4. Histogram of the total run times over the years in screen production 
+
+
+### Query 5. Count the type of screen genres
+
+
+
 
 
  
