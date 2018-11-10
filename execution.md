@@ -3,27 +3,16 @@
 This is using the elasticsearch for IMDB database query over 5.3 million screen records. Please go to your web browser and query since I have elasticsearch running in the background. You don't need to ssh into the server to do the query. 
 
 ### Query 1. Count the number of screens that come out in 1990
-
 ```
 http://169.54.131.136:9200/_search?q=1990&pretty
-
-  "hits": {
-    "total": 39028,
-    "max_score": 3.2078505,
-    "hits": [
-      {
-    ...
-    ...
 ```
-There are `39,028` screens in year 1990. Since this is an international movie database and this particular database has all kinds of screens; short, documentary, movie, film, play, so it makes sense. We can also shorten our output by directly targeting the `total` in our jq query. 
+There are `39,028` screens in year 1990. 
 
 ### Query 2. Count the number of screens that are 'short' 
 ```
 http://169.54.131.136:9200/_search?q=short&pretty
-
-784902
 ```
-Total short screens has `784,902` out of 5.4 million records. 
+There are `784,902` screens that fall into `short` genre out of 5.4 million records. 
 
 ### Query 3. Count the screen genre: Comedy
 ```
