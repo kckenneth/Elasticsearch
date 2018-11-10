@@ -62,13 +62,29 @@ with open(fname) as f:
     print("{} records inserted".format(count))
  ```
  
-## Inserting IMDB into Elasticsearch !
+## 3. Inserting IMDB into Elasticsearch !
 
 Before you launch the python script, make sure you already launched the elasticsearch which will be listening at port `9200`. 
 
 ```
 # chmod 755 imdb_insert.py
 # python imdb_insert.py title.basics.tsv
+10000 records inserted
+20000 records inserted
+30000 records inserted
+40000 records inserted
+50000 records inserted
+...
+...
+650000 records inserted
 ```
+It took minutes to insert all imdb basic database into elasticsearch. 
+
+## 4. Query 
+
+```
+# curl -X GET 'http://localhost:9200/artist/_search?q=Carmencita
+```
+
 
  
