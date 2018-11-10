@@ -247,11 +247,28 @@ Total short screens has `784,902` out of 5.4 million records.
 ```
 There are `1,172,415` comedy screens. 
 
-### Query 4. Count the number of screens that plays at least an hour `total run times`
+### Query 4. Count the number of screens that plays between 1990 and 2000.
+```
+# curl -X GET 'http://localhost:9200/_search?q=startyear:\[1990+TO+2000\]&pretty'
 
-
+  "hits" : {
+    "total" : 600744,
+    "max_score" : 1.0,
+    "hits" : [ {
+```
+There are `600,744` screens in 10 years between 1990 and 2000. 
 
 ### Query 5. Histogram of the total run times over the years in screen production 
+
+```
+# curl -X GET 'http://localhost:9200/_search?q=runtimeminutes:\[1+TO+5\]&pretty'
+
+  "hits" : {
+    "total" : 1091410,
+    "max_score" : 1.0,
+    "hits" : [ {
+```
+Over 1 million screens runs between 1 minute to 5 minutes. 
 
 
 
