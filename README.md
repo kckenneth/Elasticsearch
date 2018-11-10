@@ -39,6 +39,14 @@ OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 # curl -OL https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.0.tar.gz
 # tar xzf elasticsearch-1.7.0.tar.gz
 ```
+
+#### >> New version 6.4.3 
+After I tested with the version 1.7.0, there was a new version `6.4.3` released on November 6, 2018. So I tested a new version. 
+```
+# curl -OL https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.3.tar.gz
+# tar xzf elasticsearch-6.4.3.tar.gz
+```
+
 # Elasticsearch execution
 
 To execute elasticsearch, go to the elasticsearch bin folder, `nohup` is running the program and `&` is leaving it in the background even when you exit the terminal so that you can ping the server with its port from other terminal. 
@@ -46,6 +54,27 @@ To execute elasticsearch, go to the elasticsearch bin folder, `nohup` is running
 # cd elasticsearch-1.7.0
 # nohup ./bin/elasticsearch &
 ```
+If you want to stop the elasticsearch, which I needed to stop the `1.7.0` from running and don't want the two elasticsearch clash at the port, 
+```
+# pkill -f elasticsearch
+```
+I tried other commands to stop the elasticsearch, nothing worked. 
+```
+# /etc/init.d/elasticsearch stop
+# sudo service elasticsearch stop
+# sudo systemctl stop elasticsearch.service
+```
+You can check `# netstat -tnlp` to confirm nothing is listening at port `9200`. From the result, you can also know the `<PID>` number. So you can also kill the program by 
+```
+# kill -9 <PID>
+```
+
+#### >> New version 6.4.3 
+```
+# cd elasticsearch-6.4.3
+# nohup ./bin/elasticsearch &
+```
+
 This launch the elasticsearch in the background at port `9200`. You can check if the server is listening. You need to first open a new terminal. 
 ```
 $ ssh root@169.54.131.136
