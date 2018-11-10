@@ -2,6 +2,11 @@
 
 This is using the elasticsearch for IMDB database query over 5.3 million screen records. Please go to your web browser and query since I have elasticsearch running in the background. You don't need to ssh into the server to do the query. 
 
+1. <a href=https://github.com/kckenneth/Elasticsearch/blob/master/README.md>Setting up Elasticsearch</a> 
+2. <a href=https://github.com/kckenneth/Elasticsearch/blob/master/imdb_elasticsearch.md>Creating IMDB database in elasticsearch</a> 
+3. <a href=https://github.com/kckenneth/Elasticsearch/blob/master/kibana.md>Kibana plugin</a> 
+4. <a href=https://github.com/kckenneth/Elasticsearch/blob/master/execution.md>Query in elasticsearch database</a>
+
 ### Query 1. Count the number of screens that come out in 1990
 ```
 http://169.54.131.136:9200/_search?q=1990&pretty
