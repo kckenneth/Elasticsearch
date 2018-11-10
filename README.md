@@ -28,6 +28,10 @@ Since our server in CentOS, a command `yum` is used instead of `apt-get` in Ubun
 # echo export JAVA_HOME=\"$(readlink -f $(which java) | grep -oP '.*(?=/bin)')\" >> /root/.bash_profile
 # source /root/.bash_profile
 # $JAVA_HOME/bin/java -version
+
+openjdk version "1.8.0_191"
+OpenJDK Runtime Environment (build 1.8.0_191-b12)
+OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 ```
 
 ### Download Elasticsearch tarball and extract it
@@ -36,6 +40,53 @@ Since our server in CentOS, a command `yum` is used instead of `apt-get` in Ubun
 # tar xzf elasticsearch-1.7.0.tar.gz
 ```
 # Elasticsearch execution
+
+To execute elasticsearch, go to the elasticsearch bin folder, `nohup` is running the program and `&` is leaving it in the background even when you exit the terminal so that you can ping the server with its port from other terminal. 
+```
+# cd elasticsearch-1.7.0
+# nohup ./bin/elasticsearch &
+```
+This launch the elasticsearch in the background at port `9200`. You can check if the server is listening. You need to first open a new terminal. 
+```
+$ ssh root@169.54.131.136
+# netstat -tnlp 
+
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1317/master         
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1242/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1317/master         
+tcp6       0      0 :::9200                 :::*                    LISTEN      10598/java          
+tcp6       0      0 :::9300                 :::*                    LISTEN      10598/java          
+tcp6       0      0 :::22                   :::*                    LISTEN      1242/sshd   
+```
+So the elasticsearch program is up and running and listening at the port `9200`. So we're good to go. There are two ways to test the elasticsearch. You can go to your local brower (your laptop) or you can test from the virtual server you're now in. 
+
+### Check from the browser
+```
+169.54.131.136:9200
+```
+### Check from the VM terminal
+```
+# curl -X GET http://localhost:9200
+```
+Both will generate 
+```
+{
+  "status" : 200,
+  "name" : "Speedball",
+  "cluster_name" : "elasticsearch",
+  "version" : {
+    "number" : "1.7.0",
+    "build_hash" : "929b9739cae115e73c346cb5f9a6f24ba735a743",
+    "build_timestamp" : "2015-07-16T14:31:07Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.4"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
 
 
 
