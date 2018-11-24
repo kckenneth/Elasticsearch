@@ -89,7 +89,7 @@ tcp6       0      0 :::9200                 :::*                    LISTEN      
 tcp6       0      0 :::9300                 :::*                    LISTEN      10598/java          
 tcp6       0      0 :::22                   :::*                    LISTEN      1242/sshd   
 ```
-So the elasticsearch program is up and running and listening at the port `9200`. So we're good to go. There are two ways to test the elasticsearch. You can go to your local brower (your laptop) or you can test from the virtual server you're now in. 
+So the elasticsearch program is up and running and listening at the port `9200`. So we're good to go. There are two ways to test the elasticsearch. You can go to your local browser (your laptop) or you can test from the virtual server you're now in. 
 
 ### 1. Check from the browser
 ```
